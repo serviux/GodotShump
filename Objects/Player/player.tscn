@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dedvqjl6g6jnw"]
+
+[ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_kma70"]
+[ext_resource type="PackedScene" uid="uid://6e18aatm1nws" path="res://Objects/Player/bullet.tscn" id="2_6vcq8"]
+[ext_resource type="Texture2D" uid="uid://whvbkspw6gc0" path="res://icon.svg" id="2_8qvkl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jr1t"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_kma70")
+bullet = ExtResource("2_6vcq8")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_8qvkl")
+
+[node name="Hitbox" type="Area2D" parent="Sprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Hitbox"]
+scale = Vector2(4.61, 4.1)
+shape = SubResource("RectangleShape2D_2jr1t")
+
+[node name="PlayerROF" type="Timer" parent="."]
+one_shot = true
+
+[node name="BulletSpawn" type="Marker2D" parent="."]
+position = Vector2(67.76, 2.08165e-12)
+
+[connection signal="area_entered" from="Sprite/Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="timeout" from="PlayerROF" to="." method="_on_player_rof_timeout"]
