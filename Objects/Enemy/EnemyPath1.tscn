@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c4w5m325e63y2"]
 
-[ext_resource type="Script" path="res://Scripts/EnemyPath.gd" id="1_182j7"]
+[ext_resource type="Script" path="res://Scripts/Enemy/EnemyPath.gd" id="1_plfgh"]
 [ext_resource type="PackedScene" uid="uid://c6xbrlt60kpr6" path="res://Objects/Enemy/enemy.tscn" id="2_w1fle"]
 
 [sub_resource type="Curve2D" id="Curve2D_5u5th"]
@@ -12,10 +12,11 @@ point_count = 5
 [node name="EnemyPath" type="Path2D"]
 position = Vector2(2, 2.08165e-12)
 curve = SubResource("Curve2D_5u5th")
-script = ExtResource("1_182j7")
+script = ExtResource("1_plfgh")
 enemies = Array[PackedScene]([ExtResource("2_w1fle"), ExtResource("2_w1fle"), ExtResource("2_w1fle"), ExtResource("2_w1fle"), ExtResource("2_w1fle"), ExtResource("2_w1fle"), ExtResource("2_w1fle"), ExtResource("2_w1fle"), ExtResource("2_w1fle")])
 
 [node name="enemy_spawn_timer" type="Timer" parent="."]
+wait_time = 5.0
 autostart = true
 
 [connection signal="timeout" from="enemy_spawn_timer" to="." method="_on_enemy_spawn_timer_timeout"]

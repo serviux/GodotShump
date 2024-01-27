@@ -12,9 +12,6 @@ func _ready():
 	total_enemies_killed = 0
 	current_idx = 0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 func _on_enemy_spawn_timer_timeout():
@@ -24,6 +21,7 @@ func _on_enemy_spawn_timer_timeout():
 func spawn():
 	if(current_idx >= total_enemies):
 		return
+	print_debug("Spawning enemy %s out of %s " % [current_idx + 1, total_enemies])
 	var mob = enemies[current_idx].instantiate()
 	mob.enemy_path = self
 	mob.on_spawn()

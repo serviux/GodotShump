@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Shoot Em"
-run/main_scene="res://Objects/Player/player.tscn"
+run/main_scene="res://Objects/world/Level1.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/initial_position_type=2
 
 [input]
 

@@ -1,25 +1,27 @@
 [gd_scene load_steps=4 format=3 uid="uid://c6xbrlt60kpr6"]
 
-[ext_resource type="Texture2D" uid="uid://whvbkspw6gc0" path="res://icon.svg" id="1_ps51f"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Enemy.gd" id="2_o7cuj"]
+[ext_resource type="Texture2D" uid="uid://c1yri162vxxrt" path="res://Sprites/BlueEnemy.png" id="2_uv5ll"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xu5bc"]
 
 [node name="Enemy" type="PathFollow2D"]
 script = ExtResource("2_o7cuj")
-speed = 50.0
+speed = 200.0
 health = 4
 score_when_killed = 10
 
 [node name="EnemySprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_ps51f")
+scale = Vector2(2, 2)
+texture = ExtResource("2_uv5ll")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." groups=["collision"]]
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
 scale = Vector2(6.27, 6.01)
 shape = SubResource("RectangleShape2D_xu5bc")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="area_shape_entered" from="Hitbox" to="." method="_on_hitbox_area_shape_entered"]

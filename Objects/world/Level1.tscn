@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpe4ctthth1v"]
+
+[ext_resource type="Script" path="res://Scripts/world/level.gd" id="1_qtoy0"]
+[ext_resource type="PackedScene" uid="uid://dedvqjl6g6jnw" path="res://Objects/Player/player.tscn" id="2_5y68b"]
+[ext_resource type="PackedScene" uid="uid://c4w5m325e63y2" path="res://Objects/Enemy/EnemyPath1.tscn" id="2_51cq4"]
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_qtoy0")
+waves = Array[PackedScene]([ExtResource("2_51cq4"), ExtResource("2_51cq4")])
+spawnTimes = Array[float]([20.0, 25.0])
+
+[node name="Player" parent="." instance=ExtResource("2_5y68b")]
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(186, 557)
+
+[node name="WaveSpawnTimer" type="Timer" parent="."]

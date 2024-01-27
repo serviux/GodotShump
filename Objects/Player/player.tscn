@@ -6,16 +6,18 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2jr1t"]
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="Node2D" groups=["Player"]]
 script = ExtResource("1_kma70")
 bullet = ExtResource("2_6vcq8")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="." groups=["Player"]]
+scale = Vector2(2, 2)
 texture = ExtResource("3_ufsrm")
 
-[node name="Hitbox" type="Area2D" parent="Sprite"]
+[node name="Hitbox" type="Area2D" parent="Sprite" groups=["Player"]]
+scale = Vector2(0.335, 0.385)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Hitbox" groups=["Player"]]
 scale = Vector2(4.61, 4.1)
 shape = SubResource("RectangleShape2D_2jr1t")
 

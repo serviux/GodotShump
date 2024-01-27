@@ -26,3 +26,12 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 	despawn.emit()
 	queue_free() # Replace with function body.
 
+
+
+func _on_hitbox_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	var groups = area.get_groups()
+	if "player_bullet" in groups:
+		health -= 1
+	if "Player" in groups:
+		#TODO: hurt the player
+		pass
